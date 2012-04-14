@@ -167,7 +167,7 @@ public class IOManager<S extends Solver<P>, P extends Problem> {
 
 		System.out.print("Solving the problems... ");
 		for (int i = 0; i < problems.size(); i++) {
-			writer.append("Case #" + i + ": " + solver.solve(problems.get(i))
+			writer.append("Case #" + (i+1) + ": " + solver.solve(problems.get(i))
 					+ System.getProperty("line.separator"));
 		}
 		System.out.println("Done!");
