@@ -10,7 +10,7 @@ This isn't as beautiful as I hoped it would be.
 Your concrete implementation of the class Problem need to initialise the attribute types:SupportedTypes[] with an array of types defining the structure of one instance of your ConcreteProblem.
 That initialisation needs to perfectly match the structure of the input file or the data in your ConcreteProblem-instances will be wrong.
 So when we take the Store Credit problem as an example ([Link to the problem at google codejam](http://code.google.com/codejam/contest/351101/dashboard#s=p0)) the input file looks like this:
-'3
+<pre>3
 100
 3
 5 75 25
@@ -19,31 +19,31 @@ So when we take the Store Credit problem as an example ([Link to the problem at 
 150 24 79 50 88 345 3
 8
 8
-2 1 9 4 4 56 90 3'
+2 1 9 4 4 56 90 3</pre>
 
 In the first line the number of problems in this input is identified. This number can be ignored for the IOManager-class will automatically parse it.
 Then comes the definition of the first problem:
-'INT (100)
+<pre>INT (100)
 INT (3)
-LIST_INT (5 75 25)'
+LIST_INT (5 75 25)</pre>
 
 So a concrete StoreCreditProblem would have the types-array initialised like that:
 
-'public StoreCreditProblem() {
+<pre>public StoreCreditProblem() {
 	this.types = new SupportedTypes[3];
 	this.types[0] = SupportedTypes.INT;
 	this.types[1] = SupportedTypes.INT;
 	this.types[2] = SupportedTypes.LIST_INT;
-}'
+}</pre>
 
 
 The second thing to do within the ConcreteProblem is to override the addValue-method. Here you can determine which data goes into which attribute. For the StoreCreditProblem I did create three attributes:
-'private int credit;
+<pre>private int credit;
 private int numberOfItemsInStore;
-private ArrayList<Integer> pricesOfItemsInStore;'
+private ArrayList<Integer> pricesOfItemsInStore;</pre>
 
 Then I did override the addValue-method so the IOManager can add the values defined within the types-array to the StoreCreditProblem:
-'@Override
+<pre>@Override
 public void addValue(Object o) throws ParseException {
 	switch (cntr) {
 	case 0:
@@ -57,6 +57,6 @@ public void addValue(Object o) throws ParseException {
 	    break;
 	}
 	super.addValue(o);
-}'
+}</pre>
 
 The local variable cntr counts how many values have already been put into this problem and is handled by super.addValue(o), so don't forget to call it.
