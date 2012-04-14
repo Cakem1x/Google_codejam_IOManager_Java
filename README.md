@@ -2,10 +2,10 @@ To use this project simply pull and use the sources. They should work with JDK C
 
 For the code to work correctly your implementations of the ConcreteProblem and the ConcreteSolver need to meet certain requirements.
 
-* ConcreteSolver:
+ConcreteSolver:
 This is quite simple: Just implement the only method defined in the Solver to solve the given ConcreteProblem.
 
-* ConcreteProblem:
+ConcreteProblem:
 This isn't as beautiful as I hoped it would be.
 Your concrete implementation of the class Problem need to initialise the attribute types:SupportedTypes[] with an array of types defining the structure of one instance of your ConcreteProblem.
 That initialisation needs to perfectly match the structure of the input file or the data in your ConcreteProblem-instances will be wrong.
@@ -21,8 +21,8 @@ So when we take the Store Credit problem as an example ([Link to the problem at 
 8
 2 1 9 4 4 56 90 3</pre>
 
-In the first line the number of problems in this input is identified. This number can be ignored for the IOManager-class will automatically parse it.
-Then comes the definition of the first problem:
+In the first line the number of problems in this input is identified. This number can be ignored because the IOManager-class will automatically parse it.
+Then the definition of the first problem follows:
 <pre>INT (100)
 INT (3)
 LIST_INT (5 75 25)</pre>
@@ -60,3 +60,5 @@ public void addValue(Object o) throws ParseException {
 }</pre>
 
 The local variable cntr counts how many values have already been put into this problem and is handled by super.addValue(o), so don't forget to call it.
+
+There are source files in the exampleStoreCredit folder using the code displayed here to "solve" the StoreCredit-problem with a dummy-solver. (the solver doesn't actually do something so you won't get spoilered)
